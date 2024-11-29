@@ -17,22 +17,21 @@ void	create_node(int n, t_node **a, t_node *last, t_node *new)
 	t_node	*lst;
 
 	lst = *a;
-	new = malloc(sizeof(t_node) + 1);
+	new = malloc(sizeof(t_node));
 	if (!new)
 		return ;
+	new->nbr = n;
+	new->next = NULL;
 	if (!lst)
 	{
-		new->nbr = n;
 		new->prev = NULL;
-		new->next = NULL;
 		lst = new;
 	}
 	else
 	{
-		last = ft_last(lst);
-		new->nbr = n;
+		last = ft_last(lst);		
 		new->prev = last;
-		new->next = NULL;
+		last->next = new;		
 	}
 }
 

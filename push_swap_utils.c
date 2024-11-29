@@ -49,9 +49,7 @@ int	ft_atoi(char *s)
 
 t_node	*ft_last(t_node *node)
 {
-	if (!node)
-		return (NULL);
-	while (node->next)
+	while (node && node->next)
 		node = node->next;
 	return (node);
 }
