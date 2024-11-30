@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_sawp.c                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:30:44 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/11/27 17:30:46 by ruida-si         ###   ########.fr       */
+/*   Updated: 2024/11/30 16:16:24 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,21 @@
 
 void	create_node(int n, t_node **a, t_node *last, t_node *new)
 {
-	t_node	*lst;
-
-	lst = *a;
 	new = malloc(sizeof(t_node));
 	if (!new)
 		return ;
 	new->nbr = n;
 	new->next = NULL;
-	if (!lst)
+	if (!*a)
 	{
 		new->prev = NULL;
-		lst = new;
+		*a = new;
 	}
 	else
 	{
-		last = ft_last(lst);		
+		last = ft_last(*a);
 		new->prev = last;
-		last->next = new;		
+		last->next = new;
 	}
 }
 
@@ -55,7 +52,7 @@ int	fill_numb(int ac, char **av, t_node **a)
 	while (i < ac)
 	{
 		n = ft_atoi(av[i]);
-		if ((n == 0 && av[i][0] != '0') ||
+		if ((n == 0 && !(av[i][0] == '0' && !av[i][1])) ||
 		have_dup(n, *a))
 		{
 			write(2, "Error\n", 6);
@@ -74,8 +71,11 @@ int	main(int ac, char **av)
 
 	a = NULL;
 	b = NULL;
-	if (ac < 3)
+	if (ac < 3 || !fill_numb(ac, av, &a))
 		return (1);
-	if (!fill_numb(ac, av, &a))
-		return (1);
+	if (!in_order(a))
+		order_stack(&a, ac -1);
+	int n = a->nbr;
+	printf("%i\n", n);
+	return (0);
 }

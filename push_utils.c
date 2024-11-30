@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   push_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 16:26:48 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/11/29 16:26:54 by ruida-si         ###   ########.fr       */
+/*   Updated: 2024/11/30 15:44:02 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,17 @@ t_node	*ft_last(t_node *node)
 	while (node && node->next)
 		node = node->next;
 	return (node);
+}
+
+int	lst_size(t_node *node)
+{
+	int	i;
+
+	i = 0;
+	while (node)
+	{
+		i++;
+		node = node->next;
+	}
+	return (i);
 }
