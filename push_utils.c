@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
 int	ft_atoi(char *s)
 {
 	long	n;
@@ -45,6 +35,24 @@ int	ft_atoi(char *s)
 	if (*s || n > INT_MAX || n < INT_MIN)
 		return (0);
 	return (n);
+}
+
+void	putstr(char *s)
+{
+	int	n;
+
+	n = ft_strlen(s);
+	write (1, s, n);
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 t_node	*ft_last(t_node *node)

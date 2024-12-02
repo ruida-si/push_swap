@@ -12,12 +12,45 @@
 
 #include "push_swap.h"
 
+int	main(int ac, char **av)
+{
+	t_node	*a;
+	t_node	*b;
+
+	a = NULL;
+	b = NULL;
+	if (ac < 2)
+		return (1);
+	if (ac == 2 && !app_split(av[1], NULL, 0, &a))
+		return (1);
+	else if (ac > 2 && !fill_numb(ac, av, &a, 1))
+		return (1);
+	ac = lst_size(a);
+	pb(&b, &a);
+	pb(&b, &a);
+	pb(&b, &a);
+	if (!in_order(a))
+		order_stack(&a, ac);	
+	while (b)
+	{
+		int n = b->nbr;
+		printf("%i\n", n);
+		b = b->next;
+	}
+	printf("%s\n", (char *)a);
+	free_stack(a);
+	return (0);
+}
+
 void	create_node(int n, t_node **a, t_node *last, t_node *new)
 {
+	static int	i;
+
 	new = malloc(sizeof(t_node));
 	if (!new)
 		return ;
 	new->nbr = n;
+	new->index = i;
 	new->next = NULL;
 	if (!*a)
 	{
@@ -30,6 +63,7 @@ void	create_node(int n, t_node **a, t_node *last, t_node *new)
 		new->prev = last;
 		last->next = new;
 	}
+	i++;
 }
 
 int	have_dup(int n, t_node *current)
@@ -43,12 +77,10 @@ int	have_dup(int n, t_node *current)
 	return (0);
 }
 
-int	fill_numb(int ac, char **av, t_node **a)
+int	fill_numb(int ac, char **av, t_node **a, int i)
 {
-	int	i;
 	int	n;
 
-	i = 1;
 	while (i < ac)
 	{
 		n = ft_atoi(av[i]);
@@ -56,6 +88,7 @@ int	fill_numb(int ac, char **av, t_node **a)
 		have_dup(n, *a))
 		{
 			write(2, "Error\n", 6);
+			free_stack(*a);
 			return (0);
 		}
 		create_node(n, a, NULL, NULL);
@@ -64,18 +97,14 @@ int	fill_numb(int ac, char **av, t_node **a)
 	return (1);
 }
 
-int	main(int ac, char **av)
+void	free_stack(t_node *node)
 {
-	t_node	*a;
-	t_node	*b;
+	t_node	*temp;
 
-	a = NULL;
-	b = NULL;
-	if (ac < 3 || !fill_numb(ac, av, &a))
-		return (1);
-	if (!in_order(a))
-		order_stack(&a, ac -1);
-	int n = a->nbr;
-	printf("%i\n", n);
-	return (0);
+	while (node)
+	{
+		temp = node->next;
+		free(node);
+		node = temp;
+	}
 }
