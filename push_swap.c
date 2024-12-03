@@ -26,18 +26,25 @@ int	main(int ac, char **av)
 	else if (ac > 2 && !fill_numb(ac, av, &a, 1))
 		return (1);
 	ac = lst_size(a);
-	pb(&b, &a);
-	pb(&b, &a);
-	pb(&b, &a);
 	if (!in_order(a))
-		order_stack(&a, ac);	
+		order_stack(&a, ac);
+	pb(&a, &b);
+	pb(&a, &b);
+	pb(&a, &b);
+	ss(&a, &b);
+	while (a)
+	{
+		int n = a->nbr;
+		printf("%i\n", n);
+		a = a->next;
+	}
+	printf("b\n");
 	while (b)
 	{
 		int n = b->nbr;
 		printf("%i\n", n);
 		b = b->next;
 	}
-	printf("%s\n", (char *)a);
 	free_stack(a);
 	return (0);
 }

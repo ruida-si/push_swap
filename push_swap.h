@@ -47,10 +47,24 @@ void	rotate(t_node **a);
 void	rev_rotate(t_node **a);
 void	push(t_node **a, t_node **b);
 
+// SWAP FUNCTIONS
 void	sa(t_node **a);
+void	sb(t_node **a);
+void	ss(t_node **a, t_node **b);
+
+// REV ROTATE FUNCTIONS
 void	rra(t_node **a);
+void	rrb(t_node **a);
+void	rrr(t_node **a, t_node **b);
+
+// ROTATE FUNCTIONS
 void	ra(t_node **a);
-void	pb(t_node **b, t_node **a);
+void	rb(t_node **a);
+void	rr(t_node **a, t_node **b);
+
+// PUSH FUNCTIONS
+void	pb(t_node **a, t_node **b);
+void	pa(t_node **a, t_node **b);
 
 // FILL STACK
 int		fill_numb(int ac, char **av, t_node **a, int i);
