@@ -18,6 +18,96 @@ void	order_stack(t_node **a, int n)
 		sa(a);
 	if (n == 3)
 		order_3(a, 0);
+	if (n > 3)
+		order_radix(a, n);
+}
+
+void	order_radix(t_node **a, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		find_low(a, i);
+		i++;
+	}
+	print_binary(a);
+}
+
+void	print_binary(t_node **a)
+{
+	t_node	*node;
+	int		n;
+	char	*s;
+	
+	node = *a;
+	while (node)
+	{		
+		n = node->index;
+		s = create_binary(n);
+		node->binary = s;
+		node = node->next;
+	}
+}
+
+char	*create_binary(int n)
+{
+	char	*array;
+	int		index;
+	
+	array = malloc(33);
+	if (!array)
+		return (NULL);
+	fill_zero(array);
+	index = 31;
+	while (n > 0)
+	{
+		array[index] = n % 2 + '0';
+		n /= 2;
+		index--;
+	}
+	return (array);
+}
+
+void	fill_zero(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (i < 32)
+	{
+		s[i] = '0';
+		i++;
+	}
+	s[i] = '\0';
+}
+
+void	find_low(t_node **a, int n)
+{
+	t_node	*node;
+	int		min;
+
+	node = *a;
+	min = INT_MAX;
+	while (node)
+	{
+		if (node->nbr <= min && node->order == 0)
+		{
+			min = node->nbr;
+		}
+		node = node->next;
+	}
+	node = *a;
+	while (node)
+	{
+		if (node->nbr == min)
+		{
+			node->order = 1;
+			node->index = n;
+		}
+		node = node->next;
+	}
 }
 
 int	in_order(t_node *node)

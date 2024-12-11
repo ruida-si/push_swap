@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_swap.c                                        :+:      :+:    :+:   */
+/*   swap_swap2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:28:55 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/12/02 15:28:59 by ruida-si         ###   ########.fr       */
+/*   Created: 2024/12/10 15:56:40 by ruida-si          #+#    #+#             */
+/*   Updated: 2024/12/10 15:56:45 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_node **a)
+void	pb(t_node **a, t_node **b)
 {
-	if (swap(a))
-		putstr("sa\n");
+	if (push(b, a))
+		putstr("pb\n");
 }
 
-void	sb(t_node **a)
+void	pa(t_node **a, t_node **b)
 {
-	if (swap(a))
-		putstr("sb\n");
+	if (push(a, b))
+		putstr("pa\n");
 }
 
-void	ss(t_node **a, t_node **b)
+void	rra(t_node **a)
 {
-	if (swap(a) && swap(b))
-		putstr("ss\n");
+	if (rev_rotate(a))
+		putstr("rra\n");
 }
 
-void	ra(t_node **a)
+void	rrb(t_node **a)
 {
-	if (rotate(a))
-		putstr("ra\n");
+	if (rev_rotate(a))
+		putstr("rrb\n");
 }
 
-void	rb(t_node **a)
+void	rrr(t_node **a, t_node **b)
 {
-	if (rotate(a))
-		putstr("rb\n");
+	if (rev_rotate(a) && rev_rotate(b))
+		putstr("rrr\n");
 }

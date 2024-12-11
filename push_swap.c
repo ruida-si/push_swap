@@ -28,22 +28,11 @@ int	main(int ac, char **av)
 	ac = lst_size(a);
 	if (!in_order(a))
 		order_stack(&a, ac);
-	pb(&a, &b);
-	pb(&a, &b);
-	pb(&a, &b);
-	ss(&a, &b);
-	while (a)
+	t_node *node = a;
+	while (node)
 	{
-		int n = a->nbr;
-		printf("%i\n", n);
-		a = a->next;
-	}
-	printf("b\n");
-	while (b)
-	{
-		int n = b->nbr;
-		printf("%i\n", n);
-		b = b->next;
+		printf("%s\n", node->binary);
+		node = node->next;
 	}
 	free_stack(a);
 	return (0);
@@ -52,12 +41,16 @@ int	main(int ac, char **av)
 void	create_node(int n, t_node **a, t_node *last, t_node *new)
 {
 	static int	i;
+	char		*s;
 
+	s = NULL;
 	new = malloc(sizeof(t_node));
 	if (!new)
 		return ;
 	new->nbr = n;
 	new->index = i;
+	new->order = 0;
+	new->binary = s;
 	new->next = NULL;
 	if (!*a)
 	{
@@ -112,6 +105,7 @@ void	free_stack(t_node *node)
 	{
 		temp = node->next;
 		free(node);
+		free(node->binary);
 		node = temp;
 	}
 }

@@ -22,6 +22,8 @@ typedef struct s_node
 {
 	int				nbr;
 	int				index;
+	int				order;
+	char			*binary;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
@@ -34,18 +36,24 @@ int		lst_size(t_node *node);
 int		ft_atoi(char *s);
 int		ft_strlen(char *s);
 void	putstr(char *s);
+void	fill_zero(char *s);
+
+char	*create_binary(int n);
+void	print_binary(t_node **a);
 
 // order stack functions
 int		find_min(t_node *node);
 int		in_order(t_node *node);
 void	order_stack(t_node **a, int n);
 void	order_3(t_node **a, int index);
+void	order_radix(t_node **a, int n);
+void	find_low(t_node **a, int n);
 
 // operations with stacks
-void	swap(t_node **a);
-void	rotate(t_node **a);
-void	rev_rotate(t_node **a);
-void	push(t_node **a, t_node **b);
+int		swap(t_node **a);
+int		rotate(t_node **a);
+int		rev_rotate(t_node **a);
+int		push(t_node **a, t_node **b);
 
 // SWAP FUNCTIONS
 void	sa(t_node **a);

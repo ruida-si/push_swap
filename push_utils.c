@@ -21,6 +21,8 @@ int	ft_atoi(char *s)
 	sign = 1;
 	if (ft_strlen(s) > 11)
 		return (0);
+	if ((s[0] == '-' && s[1] == '0') || (s[0] == '0' && s[1] == '0'))
+		return (0);
 	if (*s == '-')
 	{
 		sign = -1;

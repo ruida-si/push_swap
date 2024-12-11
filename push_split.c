@@ -16,7 +16,10 @@ int	app_split(char *s, char **av, int count, t_node **a)
 {
 	count = count_wd(s);
 	if (count < 2)
+	{
+		write(2, "Error\n", 6);
 		return (0);
+	}
 	av = malloc(sizeof(char *) * (count +1));
 	if (!av)
 		return (0);
