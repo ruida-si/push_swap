@@ -40,7 +40,11 @@ void	putstr(char *s);
 int		in_order(t_node *node);
 void	order_stack(t_node **a, t_node **b, int n);
 void	create_index(t_node **a, int n);
+
 void	order_3(t_node **a, int index);
+void	order_4(t_node **a, t_node **b);
+void	order_5(t_node **a, t_node **b, int n);
+
 void	order_radix(t_node **a, t_node **b, int n);
 void	find_min(t_node **a, int n);
 

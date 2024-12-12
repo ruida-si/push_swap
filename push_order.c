@@ -19,8 +19,34 @@ void	order_stack(t_node **a, t_node **b, int n)
 	create_index(a, n);
 	if (n == 3)
 		order_3(a, 0);
-	if (n > 3)
+	if (n < 6)
+		order_5(a, b, n);
+	else
 		order_radix(a, b, n);
+}
+
+void	order_5(t_node **a, t_node **b, int n)
+{
+	if (n == 4)
+		pb(a, b);
+	else
+	{
+		pb(a, b);
+		pb(a, b);
+	}
+	order_3(a, 0);
+	if (in_order(*b))
+		sb(b);
+	if (n == 4)
+		order_4(a, b);
+	else
+	{
+		if ((*b)->index == 1)
+		{
+			pa(a, b);
+			pa(a, b);
+		}
+	}
 }
 
 void	order_radix(t_node **a, t_node **b, int n)
@@ -60,27 +86,4 @@ int	in_order(t_node *node)
 		node = node->next;
 	}
 	return (1);
-}
-
-void	order_3(t_node **a, int index)
-{
-	index = (*a)->index;
-	if (index == 0)
-	{
-		rra(a);
-		sa(a);
-	}
-	if (index == 2)
-	{
-		ra(a);
-		if (!in_order(*a))
-			sa(a);
-	}
-	if (index == 1)
-	{
-		if ((*a)->nbr > ft_last(*a)->nbr)
-			rra(a);
-		else
-			sa(a);
-	}
 }

@@ -28,12 +28,12 @@ int	main(int ac, char **av)
 	ac = lst_size(a);
 	if (!in_order(a))
 		order_stack(&a, &b, ac);
-	/* t_node *node = a;
+	t_node *node = a;
 	while (node)
 	{
 		printf("%i\n", node->nbr);
 		node = node->next;
-	} */
+	}
 	free_stack(a);
 	return (0);
 }
