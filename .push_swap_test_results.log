@@ -1,0 +1,29 @@
+[1    /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+9 5 8 6 1 7 3 2 0 4
+[2    /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+6 4 2 8 5 3 0 7 1 9
+[3    /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+7 4 1 6 8 2 3 0 9 5
+[4    /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+9 2 7 3 5 8 6 4 0 1
+[5    /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+9 1 7 3 2 6 8 4 0 5
+[6    /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+7 0 8 1 6 2 4 5 9 3
+[7    /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+9 7 8 1 2 0 3 4 5 6
+[8    /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+6 3 9 1 0 5 4 8 7 2
+[9    /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+8 7 4 6 1 9 3 0 5 2
+[10   /   10] InputSize   10 InstrCount     65 Pass or Fail ? -
+9 7 3 4 5 8 2 1 0 6
+
+Input Size : 10
+Min 65
+Max 65
+Average : 65
+
+Pass or Fail ?
+Max : -
+Average : -
