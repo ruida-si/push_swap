@@ -16,7 +16,6 @@ FLAGS = -Wall -Wextra -Werror
 
 SRC = push_commands.c push_order.c push_split.c push_swap.c \
 	push_utils.c swap_swap.c swap_swap2.c push_order_radix.c \
-	
 
 OBJ = $(SRC:.c=.o)
 

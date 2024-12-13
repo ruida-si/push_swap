@@ -18,35 +18,55 @@ void	order_stack(t_node **a, t_node **b, int n)
 		sa(a);
 	create_index(a, n);
 	if (n == 3)
-		order_3(a, 0);
-	if (n < 6)
-		order_5(a, b, n);
+		order_3(a);
+	if (n == 4)
+		order_4(a, b);
 	else
 		order_radix(a, b, n);
 }
 
-void	order_5(t_node **a, t_node **b, int n)
+void	order_4(t_node **a, t_node **b)
 {
-	if (n == 4)
-		pb(a, b);
+	t_node	*node;
+	int		i;
+
+	node = *a;
+	i = 0;
+	while (node)
+	{
+		if (node->index == 0)
+			break ;
+		i++;
+		node = node->next;
+	}
+	if (i < 2)
+	{
+		while (i-- > 0)
+			ra(a);
+	}
 	else
 	{
-		pb(a, b);
-		pb(a, b);
+		while (i++ < 4)
+			rra(a);		
 	}
-	order_3(a, 0);
-	if (in_order(*b))
-		sb(b);
-	if (n == 4)
-		order_4(a, b);
-	else
+	pb(a, b);
+	reset_index(a);
+	if (!in_order(*a))
+		order_3(a);
+	pa(a, b);
+}
+
+void	reset_index(t_node **a)
+{
+	t_node	*node;
+
+	node = *a;
+	while (node)
 	{
-		if ((*b)->index == 1)
-		{
-			pa(a, b);
-			pa(a, b);
-		}
+		node->order = 0;
+		node = node->next;
 	}
+	create_index(a, 3);
 }
 
 void	order_radix(t_node **a, t_node **b, int n)

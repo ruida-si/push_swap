@@ -76,17 +76,17 @@ int	rev_rotate(t_node **a)
 
 int	push(t_node **a, t_node **b)
 {
-	t_node	*tempb;
+	t_node	*temp;
 
 	if (!*b)
 		return (0);
-	tempb = (*b)->next;
-	if (tempb)
-		tempb->prev = NULL;
+	temp = (*b)->next;
+	if (temp)
+		temp->prev = NULL;
 	(*b)->next = *a;
 	if (*a)
 		(*a)->prev = *b;
 	*a = *b;
-	*b = tempb;
+	*b = temp;
 	return (1);
 }

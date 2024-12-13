@@ -41,9 +41,9 @@ int		in_order(t_node *node);
 void	order_stack(t_node **a, t_node **b, int n);
 void	create_index(t_node **a, int n);
 
-void	order_3(t_node **a, int index);
+void	order_3(t_node **a);
 void	order_4(t_node **a, t_node **b);
-void	order_5(t_node **a, t_node **b, int n);
+void	reset_index(t_node **a);
 
 void	order_radix(t_node **a, t_node **b, int n);
 void	find_min(t_node **a, int n);
@@ -78,10 +78,10 @@ int		fill_numb(int ac, char **av, t_node **a, int i);
 void	free_stack(t_node *node);
 
 // SPLIT FUNCTIONS
-void	free_mem(char **av, int i);
-int		length(char *s);
-char	**fill_split(char **av, char *s);
 int		app_split(char *s, char **av, int count, t_node **a);
 int		count_wd(char *s);
+int		length(char *s);
+char	**fill_split(char **av, char *s);
+void	free_mem(char **av, int i);
 
 #endif
