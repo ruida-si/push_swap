@@ -19,54 +19,51 @@ void	order_stack(t_node **a, t_node **b, int n)
 	create_index(a, n);
 	if (n == 3)
 		order_3(a);
-	if (n == 4)
-		order_4(a, b);
+	if (n == 4 || n == 5)
+		order_4_5(a, b, n);
 	else
 		order_radix(a, b, n);
 }
 
-void	order_4(t_node **a, t_node **b)
+void	order_3(t_node **a)
 {
-	t_node	*node;
-	int		i;
-
-	node = *a;
-	i = 0;
-	while (node)
+	if ((*a)->index == 0)
 	{
-		if (node->index == 0)
-			break ;
-		i++;
-		node = node->next;
+		rra(a);
+		sa(a);
 	}
-	if (i < 2)
+	if ((*a)->index == 2)
 	{
-		while (i-- > 0)
-			ra(a);
+		ra(a);
+		if (!in_order(*a))
+			sa(a);
+	}
+	if ((*a)->index == 1)
+	{
+		if ((*a)->nbr > ft_last(*a)->nbr)
+			rra(a);
+		else
+			sa(a);
+	}
+}
+
+void	order_4_5(t_node **a, t_node **b, int n)
+{
+	put_ontop(a, n);
+	if (in_order(*a))
+		return ;
+	pb(a, b);
+	reset_index(a);
+	if (n == 4)
+	{
+		order_3(a);
+		pa(a, b);
 	}
 	else
 	{
-		while (i++ < 4)
-			rra(a);		
+		order_4_5(a, b, 4);
+		pa(a, b);
 	}
-	pb(a, b);
-	reset_index(a);
-	if (!in_order(*a))
-		order_3(a);
-	pa(a, b);
-}
-
-void	reset_index(t_node **a)
-{
-	t_node	*node;
-
-	node = *a;
-	while (node)
-	{
-		node->order = 0;
-		node = node->next;
-	}
-	create_index(a, 3);
 }
 
 void	order_radix(t_node **a, t_node **b, int n)

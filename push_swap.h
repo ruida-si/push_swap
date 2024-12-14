@@ -39,14 +39,16 @@ void	putstr(char *s);
 // order stack functions
 int		in_order(t_node *node);
 void	order_stack(t_node **a, t_node **b, int n);
-void	create_index(t_node **a, int n);
-
 void	order_3(t_node **a);
-void	order_4(t_node **a, t_node **b);
-void	reset_index(t_node **a);
-
+void	order_4_5(t_node **a, t_node **b, int n);
 void	order_radix(t_node **a, t_node **b, int n);
+
+// order stack utils
+void	create_index(t_node **a, int n);
+void	put_ontop(t_node **a, int n);
+void	reset_index(t_node **a);
 void	find_min(t_node **a, int n);
+int		find_med(int n);
 
 // operations with stacks
 int		swap(t_node **a);

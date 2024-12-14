@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_order_radix.c                                 :+:      :+:    :+:   */
+/*   push_order_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruida-si <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 12:52:41 by ruida-si          #+#    #+#             */
-/*   Updated: 2024/12/12 12:52:45 by ruida-si         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:13:05 by ruida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,56 @@ void	create_index(t_node **a, int n)
 	}
 }
 
-void	order_3(t_node **a)
+void	put_ontop(t_node **a, int n)
 {
-	if ((*a)->index == 0)
+	t_node	*node;
+	int		i;
+	int		med;
+
+	med = find_med(n);
+	i = 0;
+	node = *a;
+	while (node)
 	{
-		rra(a);
-		sa(a);
+		if (node->index == 0)
+			break ;
+		i++;
+		node = node->next;
 	}
-	if ((*a)->index == 2)
+	if (i < med)
 	{
-		ra(a);
-		if (!in_order(*a))
-			sa(a);
+		while (i-- > 0)
+			ra(a);
 	}
-	if ((*a)->index == 1)
+	else
 	{
-		if ((*a)->nbr > ft_last(*a)->nbr)
+		while (i++ < n)
 			rra(a);
-		else
-			sa(a);
 	}
+}
+
+int	find_med(int n)
+{
+	int	med;
+
+	if (n % 2 != 0)
+		med = n / 2 + 1;
+	else
+		med = n / 2;
+	return (med);
+}
+
+void	reset_index(t_node **a)
+{
+	t_node	*node;
+
+	node = *a;
+	while (node)
+	{
+		node->order = 0;
+		node = node->next;
+	}
+	create_index(a, 3);
 }
 
 void	find_min(t_node **a, int n)
