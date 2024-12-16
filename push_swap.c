@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 void	create_node(int n, t_node **a, t_node *last, t_node *new)
 {
 	static int	i;
-	
+
 	new = malloc(sizeof(t_node));
 	if (!new)
 		return ;
