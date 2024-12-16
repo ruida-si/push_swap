@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>Sorting 500 numbers</h1>
-    <img src="https://github.com/ruida-si/push_swap/blob/main/push_swap.gif?raw=true" alt="Advent of Code Day 1">
+    <img src="https://github.com/ruida-si/push_swap/blob/main/push_swap.gif" alt="push_swap">
 </body>
 </html>
