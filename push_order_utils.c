@@ -63,7 +63,7 @@ int	find_med(int n)
 	return (med);
 }
 
-void	reset_index(t_node **a)
+void	reset_index(t_node **a, int n)
 {
 	t_node	*node;
 
@@ -73,7 +73,7 @@ void	reset_index(t_node **a)
 		node->order = 0;
 		node = node->next;
 	}
-	create_index(a, 3);
+	create_index(a, n);
 }
 
 void	find_min(t_node **a, int n)

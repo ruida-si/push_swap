@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include <stdio.h>
 
 typedef struct s_node
 {
@@ -46,7 +45,7 @@ void	order_radix(t_node **a, t_node **b, int n);
 // order stack utils
 void	create_index(t_node **a, int n);
 void	put_ontop(t_node **a, int n);
-void	reset_index(t_node **a);
+void	reset_index(t_node **a, int n);
 void	find_min(t_node **a, int n);
 int		find_med(int n);
 

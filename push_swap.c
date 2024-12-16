@@ -28,12 +28,6 @@ int	main(int ac, char **av)
 	ac = lst_size(a);
 	if (!in_order(a))
 		order_stack(&a, &b, ac);
-	t_node *node = a;
-	while (node)
-	{
-		printf("%i\n", node->nbr);
-		node = node->next;
-	}
 	free_stack(a);
 	return (0);
 }
@@ -41,9 +35,7 @@ int	main(int ac, char **av)
 void	create_node(int n, t_node **a, t_node *last, t_node *new)
 {
 	static int	i;
-	char		*s;
-
-	s = NULL;
+	
 	new = malloc(sizeof(t_node));
 	if (!new)
 		return ;

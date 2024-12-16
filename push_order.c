@@ -53,7 +53,7 @@ void	order_4_5(t_node **a, t_node **b, int n)
 	if (in_order(*a))
 		return ;
 	pb(a, b);
-	reset_index(a);
+	reset_index(a, n -1);
 	if (n == 4)
 	{
 		order_3(a);

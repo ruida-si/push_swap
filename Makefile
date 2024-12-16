@@ -15,19 +15,16 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror
 
 SRC = push_commands.c push_order.c push_split.c push_swap.c \
-	push_utils.c swap_swap.c swap_swap2.c push_order_utils.c \
+	push_utils.c swap_swap.c swap_swap2.c push_order_utils.c
 
 OBJ = $(SRC:.c=.o)
 
-NAME = push_swap.a
+NAME = push_swap
 
-$(NAME): $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
+$(NAME):
+	@$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
 all: $(NAME)
-
-ap:
-	@$(CC) $(FLAGS) $(SRC) -o push_swap
 
 clean:
 	rm -rf $(OBJ)
@@ -37,4 +34,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all ap clean fclean re
+.PHONY: all clean fclean re
