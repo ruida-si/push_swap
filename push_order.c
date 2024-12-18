@@ -19,8 +19,8 @@ void	order_stack(t_node **a, t_node **b, int n)
 	create_index(a, n);
 	if (n == 3)
 		order_3(a);
-	if (n == 4 || n == 5)
-		order_4_5(a, b, n);
+	if (n > 3 && n < 51)
+		order_till50(a, b, n);
 	else
 		order_radix(a, b, n);
 }
@@ -47,7 +47,7 @@ void	order_3(t_node **a)
 	}
 }
 
-void	order_4_5(t_node **a, t_node **b, int n)
+void	order_till50(t_node **a, t_node **b, int n)
 {
 	put_ontop(a, n);
 	if (in_order(*a))
@@ -61,7 +61,7 @@ void	order_4_5(t_node **a, t_node **b, int n)
 	}
 	else
 	{
-		order_4_5(a, b, 4);
+		order_till50(a, b, n -1);
 		pa(a, b);
 	}
 }

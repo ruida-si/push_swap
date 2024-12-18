@@ -39,7 +39,7 @@ void	putstr(char *s);
 int		in_order(t_node *node);
 void	order_stack(t_node **a, t_node **b, int n);
 void	order_3(t_node **a);
-void	order_4_5(t_node **a, t_node **b, int n);
+void	order_till50(t_node **a, t_node **b, int n);
 void	order_radix(t_node **a, t_node **b, int n);
 
 // order stack utils
