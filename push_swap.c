@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-void	create_node(int n, t_node **a, t_node *last, t_node *new)
+static void	create_node(int n, t_node **a, t_node *last, t_node *new)
 {
 	static int	i;
 
@@ -59,7 +59,7 @@ void	create_node(int n, t_node **a, t_node *last, t_node *new)
 	i++;
 }
 
-int	have_dup(int n, t_node *current)
+static int	have_dup(int n, t_node *current)
 {
 	while (current)
 	{
