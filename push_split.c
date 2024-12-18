@@ -12,6 +12,11 @@
 
 #include "push_swap.h"
 
+static void	free_mem(char **av, int i);
+static char	**fill_split(char **av, char *s);
+static int	count_wd(char *s);
+static int	length(char *s);
+
 int	app_split(char *s, char **av, int count, t_node **a)
 {
 	count = count_wd(s);
@@ -35,7 +40,7 @@ int	app_split(char *s, char **av, int count, t_node **a)
 	return (1);
 }
 
-char	**fill_split(char **av, char *s)
+static char	**fill_split(char **av, char *s)
 {
 	int	i;
 	int	j;
@@ -63,7 +68,7 @@ char	**fill_split(char **av, char *s)
 	return (av);
 }
 
-int	count_wd(char *s)
+static int	count_wd(char *s)
 {
 	int	count;
 
@@ -81,7 +86,7 @@ int	count_wd(char *s)
 	return (count);
 }
 
-int	length(char *s)
+static int	length(char *s)
 {
 	int	i;
 
@@ -94,7 +99,7 @@ int	length(char *s)
 	return (i);
 }
 
-void	free_mem(char **av, int i)
+static void	free_mem(char **av, int i)
 {
 	while (i >= 0)
 	{

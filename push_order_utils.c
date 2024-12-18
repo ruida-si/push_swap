@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+static int	find_med(int n);
+static void	find_min(t_node **a, int n);
+
 void	create_index(t_node **a, int n)
 {
 	int	i;
@@ -52,7 +55,7 @@ void	put_ontop(t_node **a, int n)
 	}
 }
 
-int	find_med(int n)
+static int	find_med(int n)
 {
 	int	med;
 
@@ -76,7 +79,7 @@ void	reset_index(t_node **a, int n)
 	create_index(a, n);
 }
 
-void	find_min(t_node **a, int n)
+static void	find_min(t_node **a, int n)
 {
 	t_node	*node;
 	int		min;

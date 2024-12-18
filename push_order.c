@@ -12,6 +12,10 @@
 
 #include "push_swap.h"
 
+static void	order_3(t_node **a);
+static void	order_till50(t_node **a, t_node **b, int n);
+static void	order_radix(t_node **a, t_node **b, int n);
+
 void	order_stack(t_node **a, t_node **b, int n)
 {
 	if (n == 2)
@@ -25,7 +29,7 @@ void	order_stack(t_node **a, t_node **b, int n)
 		order_radix(a, b, n);
 }
 
-void	order_3(t_node **a)
+static void	order_3(t_node **a)
 {
 	if ((*a)->index == 0)
 	{
@@ -47,7 +51,7 @@ void	order_3(t_node **a)
 	}
 }
 
-void	order_till50(t_node **a, t_node **b, int n)
+static void	order_till50(t_node **a, t_node **b, int n)
 {
 	put_ontop(a, n);
 	if (in_order(*a))
@@ -66,7 +70,7 @@ void	order_till50(t_node **a, t_node **b, int n)
 	}
 }
 
-void	order_radix(t_node **a, t_node **b, int n)
+static void	order_radix(t_node **a, t_node **b, int n)
 {
 	int		bit;
 	t_node	*node;

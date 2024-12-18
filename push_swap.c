@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+static void	free_stack(t_node *node);
+
 int	main(int ac, char **av)
 {
 	t_node	*a;
@@ -88,7 +90,7 @@ int	fill_numb(int ac, char **av, t_node **a, int i)
 	return (1);
 }
 
-void	free_stack(t_node *node)
+static void	free_stack(t_node *node)
 {
 	t_node	*temp;
 
